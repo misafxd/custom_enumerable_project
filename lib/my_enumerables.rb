@@ -73,6 +73,16 @@ module Enumerable
       size
     end
   end
+
+  def my_map
+    index = 0
+    new_array = []
+    while index < size
+      new_array.push(yield(self[index])) if block_given?
+      index += 1
+    end
+    new_array
+  end
 end
 
 # You will first have to define my_each
