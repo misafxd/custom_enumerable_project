@@ -39,6 +39,16 @@ module Enumerable
     end
     new_array.size == size
   end
+
+  def my_any?
+    index = 0
+    new_array = []
+    while index < size
+      new_array.push(self[index]) if block_given? && yield(self[index])
+      index += 1
+    end
+    new_array.size.positive?
+  end
 end
 
 # You will first have to define my_each
@@ -47,5 +57,4 @@ end
 # to this method
 class Array
   # Define my_each here
-
 end
