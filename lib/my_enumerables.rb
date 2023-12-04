@@ -59,6 +59,20 @@ module Enumerable
     end
     new_array.empty?
   end
+
+  def my_count
+    index = 0
+    count = 0
+    if block_given?
+      while index < size
+        count += 1 if yield(self[index])
+        index += 1
+      end
+      count
+    else
+      size
+    end
+  end
 end
 
 # You will first have to define my_each
