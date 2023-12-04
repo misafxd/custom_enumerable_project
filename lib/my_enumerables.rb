@@ -1,13 +1,22 @@
 module Enumerable
   # Your code goes here
   def my_each
-    array_size = self.size
+    array_size = size
     index = 0
     new_array = []
     while index < array_size
-      if block_given?
-        new_array.push(yield(self[index]))
-      end
+      new_array.push(yield(self[index])) if block_given?
+      index += 1
+    end
+    self
+  end
+
+  def my_each_with_index
+    array_size = size
+    index = 0
+    new_array = []
+    while index < array_size
+      new_array.push(yield(self[index], index)) if block_given?
       index += 1
     end
     self
